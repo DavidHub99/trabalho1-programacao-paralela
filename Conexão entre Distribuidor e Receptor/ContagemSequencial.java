@@ -8,7 +8,7 @@ public class ContagemSequencial {
         Random random = new Random();
 
         // 1) Gera vetor aleatório
-        int tamanho = 1_000_000;
+        int tamanho = 1000000;
         byte[] vetor = gerarVetorAleatorio(tamanho);
 
         // 2) Pergunta ao usuário e determina valor de busca

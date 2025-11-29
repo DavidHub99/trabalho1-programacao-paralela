@@ -60,7 +60,7 @@ public class ServidorReceptor {
 
                 } else if (objetoRecebido instanceof ComunicadoEncerramento) {
                     System.out.println("[R] ComunicadoEncerramento recebido. Fechando conexão e voltando a aceitar novas.");
-                    break; // Sai do loop e fecha a conexão (try-with-resources)
+                    break; // Sai do loop e fecha a conexão 
                 } else {
                     System.err.println("[R] Objeto não reconhecido recebido: " + objetoRecebido.getClass().getName());
                 }
@@ -71,8 +71,9 @@ public class ServidorReceptor {
         }
     }
     
-    // Implementação da contagem paralela (adaptada do Receptor.java original)
-    public static int contarOcorrenciasParalelo(byte[] vetor, int valorBusca) {
+    // Implementação da contagem paralela 
+    public static int 
+    contarOcorrenciasParalelo(byte[] vetor, int valorBusca) {
         int numProcessadores = Runtime.getRuntime().availableProcessors();
         int numThreads = numProcessadores;
         int tamanhoParte = vetor.length / numThreads;
@@ -85,7 +86,7 @@ public class ServidorReceptor {
                 int inicio = i * tamanhoParte;
                 int fim = (i == numThreads - 1) ? vetor.length : (inicio + tamanhoParte);
 
-                // Não é necessário criar um subVetor, podemos passar o array original e os índices
+
                 // No entanto, para simplificar a tarefa Callable, vamos extrair o subVetor
                 byte[] subVetor = new byte[fim - inicio];
                 System.arraycopy(vetor, inicio, subVetor, 0, fim - inicio);

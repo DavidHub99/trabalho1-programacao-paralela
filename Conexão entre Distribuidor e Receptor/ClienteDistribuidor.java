@@ -9,17 +9,16 @@ import java.util.Scanner;
 
 public class ClienteDistribuidor {
 
-    // IPs dos servidores (hard coded conforme requisito 5.1)
-    // Para teste local, usaremos localhost (127.0.0.1) e portas diferentes
-    private static final String[] IPS_SERVIDORES = {"127.0.0.1", "127.0.0.1", "127.0.0.1"};
-    private static final int[] PORTAS_SERVIDORES = {12345, 12346, 12347}; // Usaremos portas diferentes para simular 3 servidores na mesma máquina
+    // IPs dos servidores
+    private static final String[] IPS_SERVIDORES = {"127.0.0.1", "172.16.225.37", "172.16.229.175"};
+    private static final int[] PORTAS_SERVIDORES = {12345, 12346, 12347}; 
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
         // 1) Gera vetor aleatório
-        int tamanho = 1_000_000;
+        int tamanho = 10000000;
         byte[] vetor = gerarVetorAleatorio(tamanho);
 
         // 2) Pergunta ao usuário
@@ -59,7 +58,7 @@ public class ClienteDistribuidor {
             thread.start();
         }
 
-        // 6) Aguarda o término de todas as threads (requisito 5.5 - Thread.join())
+        // 6) Aguarda o término de todas as threads 
         int contagemTotal = 0;
         try {
             for (ThreadServidor thread : threads) {
